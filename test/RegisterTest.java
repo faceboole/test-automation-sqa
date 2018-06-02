@@ -126,7 +126,7 @@ public class RegisterTest {
   
   @DataProvider(name = "data")
   String[][] data () throws IOException {
-      String[][] a = new String[1][];
+      String[][] a = new String[2][];
       try (BufferedReader br = new BufferedReader(new FileReader(new File("register.csv")))) {
         String line;
         int i = 0;

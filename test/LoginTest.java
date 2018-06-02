@@ -26,6 +26,8 @@ import org.testng.annotations.*;
 import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -52,6 +54,14 @@ public class LoginTest {
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys(password);
     driver.findElement(By.name("login")).click();
+    Alert alert;
+    try{
+        alert = driver.switchTo().alert();
+        alert.dismiss();
+    }
+    catch(Exception e) {
+        e.printStackTrace();
+    }
     String outcome = driver.getCurrentUrl().equals("http://localhost/sqa/admin/home.php") ? "success" : "fail";
     System.out.println(outcome + " --------------------- " + status);
     Assert.assertTrue(outcome.equals(status));
